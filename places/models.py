@@ -20,6 +20,7 @@ class Place(models.Model):
         return self.title
 
     def get_absolute_url(self):
+        """get absolute url for palce object."""
         return reverse("places:place_detail", kwargs={"pk": self.pk})
 
 
@@ -45,4 +46,5 @@ class Image(models.Model):
 
     @property
     def get_image_url(self):
+        """Get full image url to use in a view."""
         return "{}".format(self.image.url)

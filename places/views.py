@@ -45,6 +45,7 @@ class PlaceDetailView(DetailView):
     template_name = "index.html"
 
     def get(self, request, *args, **kwargs):
+        """Pass serialized place object."""
         place = self.get_object()
 
         place_data = {
