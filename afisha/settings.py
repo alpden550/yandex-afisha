@@ -12,10 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-from environs import Env
+from dotenv import load_dotenv
 
-env = Env()
-env.read_env()
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,10 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'oeepmc=9r68h%xk70lx^j00x5(0g$+lbi3sej73%lx*0gccwt^'  # public for pythonanywhere
+SECRET_KEY = os.getenv('SECRET_KEY', 'secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG')
+DEBUG = os.getenv('DEBUG') in ('1', 'yes', 'true', 'True')
 
 ALLOWED_HOSTS = []
 
