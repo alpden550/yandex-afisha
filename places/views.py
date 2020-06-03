@@ -54,7 +54,8 @@ class PlaceDetailView(DetailView):
           'coordinates': {
             'lat': place.latitude,
             'lng': place.longitude,
-          }
+          },
+          'imgs': [image.get_image_url for image in place.images.all()],
         }
 
         return JsonResponse(
