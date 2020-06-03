@@ -5,5 +5,6 @@ from places import views
 app_name = 'pages'
 
 urlpatterns = [
-    path('', views.PagesMainView.as_view(), name='index'),
+    path('', views.PlacesMainView.as_view(), name='index'),
+    path('places/<int:pk>', views.PlaceDetailView.as_view(), name='place_detail'),
 ]
