@@ -23,6 +23,14 @@ class Image(models.Model):
     """Image for a place object."""
 
     image = models.ImageField('Image', upload_to=settings.UPLOAD_IMAGE_PATH)
+    place = models.ForeignKey(
+        'places.Place',
+        verbose_name='Place',
+        on_delete=models.CASCADE,
+        related_name='images',
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         verbose_name = 'Image'
