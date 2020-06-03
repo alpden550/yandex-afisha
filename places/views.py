@@ -1,4 +1,6 @@
+from django.http import JsonResponse
 from django.views.generic import DetailView, TemplateView
+
 from places.models import Place
 
 
@@ -37,5 +39,26 @@ class PlacesMainView(TemplateView):
 
 
 class PlaceDetailView(DetailView):
+    """Manage place detail object."""
+
     model = Place
     template_name = "index.html"
+
+    def get(self, request, *args, **kwargs):
+        place = self.get_object()
+        # context = self.get_context_data(object=place)
+        place_data = {
+          'title': place.title,
+          'description_short': place.description_short,
+          'description_long': place.description_long,
+          'coordinates': {
+            'lat': place.latitude,
+            'lng': place.longitude,
+          }
+        }
+        print(place_data)
+        return JsonResponse(
+            place_data,
+            json_dumps_params={'ensure_ascii': False, 'indent': 4},
+            safe=False,
+        )
