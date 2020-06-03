@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -21,11 +22,11 @@ class Place(models.Model):
 class Image(models.Model):
     """Image for a place object."""
 
-    image = models.ImageField('Image')
+    image = models.ImageField('Image', upload_to=settings.UPLOAD_IMAGE_PATH)
 
     class Meta:
         verbose_name = 'Image'
         verbose_name_plural = 'Images'
 
     def __str__(self):
-        return f'Image with {self.pk}'
+        return f'Image with ID {self.pk}'
