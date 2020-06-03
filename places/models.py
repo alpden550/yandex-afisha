@@ -16,3 +16,16 @@ class Place(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Image(models.Model):
+    """Image for a place object."""
+
+    image = models.ImageField('Image')
+
+    class Meta:
+        verbose_name = 'Image'
+        verbose_name_plural = 'Images'
+
+    def __str__(self):
+        return f'Image with {self.pk}'
