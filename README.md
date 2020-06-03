@@ -2,6 +2,8 @@
 
 Personal site and city poster about the most interesting places in Moscow.
 
+Site example – [alpden.pythonanywhere.com](http://alpden.pythonanywhere.com/)
+
 [![2020-06-03-18-19-33.png](https://i.postimg.cc/0ykTf6sT/2020-06-03-18-19-33.png)](https://postimg.cc/JGFY7ztx)
 
 ## How to install

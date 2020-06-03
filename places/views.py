@@ -44,6 +44,11 @@ class PlaceDetailView(DetailView):
     model = Place
     template_name = "index.html"
 
+    def get_queryset(self):
+        """Get queryset with related objects."""
+        queryset = Place.objects.prefetch_related('images')
+        return queryset
+
     def get(self, request, *args, **kwargs):
         """Pass serialized place object."""
         place = self.get_object()
