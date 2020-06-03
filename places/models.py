@@ -3,7 +3,7 @@ from django.urls import reverse
 
 
 class Place(models.Model):
-    """Model to represent place object."""
+    """Model to represent a place object."""
 
     title = models.CharField('Title', max_length=250, unique=True, db_index=True)
     place_id = models.CharField('Place ID slug field', max_length=100)
@@ -20,7 +20,7 @@ class Place(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        """get absolute url for palce object."""
+        """get absolute url for a place object."""
         return reverse("places:place_detail", kwargs={"pk": self.pk})
 
 
