@@ -28,7 +28,7 @@ class PlacesMainView(TemplateView):
                 },
                 'properties': {
                     'title': place.title,
-                    'placeId': 'placeId',
+                    'placeId': place.place_id,
                     'detailsUrl': 'detailsUrl',
                 },
             }
@@ -46,7 +46,7 @@ class PlaceDetailView(DetailView):
 
     def get(self, request, *args, **kwargs):
         place = self.get_object()
-        # context = self.get_context_data(object=place)
+
         place_data = {
           'title': place.title,
           'description_short': place.description_short,
@@ -56,7 +56,7 @@ class PlaceDetailView(DetailView):
             'lng': place.longitude,
           }
         }
-        print(place_data)
+
         return JsonResponse(
             place_data,
             json_dumps_params={'ensure_ascii': False, 'indent': 4},
