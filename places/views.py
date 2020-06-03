@@ -29,7 +29,7 @@ class PlacesMainView(TemplateView):
                 'properties': {
                     'title': place.title,
                     'placeId': place.place_id,
-                    'detailsUrl': 'detailsUrl',
+                    'detailsUrl': place.get_absolute_url(),
                 },
             }
             places_geo.get('features').append(place_feature)

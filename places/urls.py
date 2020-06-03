@@ -2,7 +2,7 @@ from django.urls import path
 
 from places import views
 
-app_name = 'pages'
+app_name = 'places'
 
 urlpatterns = [
     path('', views.PlacesMainView.as_view(), name='index'),

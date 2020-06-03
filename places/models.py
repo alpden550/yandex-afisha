@@ -1,5 +1,5 @@
-from django.conf import settings
 from django.db import models
+from django.urls import reverse
 
 
 class Place(models.Model):
@@ -19,11 +19,14 @@ class Place(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse("places:place_detail", kwargs={"pk": self.pk})
+
 
 class Image(models.Model):
     """Image for a place object."""
 
-    image = models.ImageField('Image', upload_to=settings.UPLOAD_IMAGE_PATH)
+    image = models.ImageField('Image')
     place = models.ForeignKey(
         'places.Place',
         verbose_name='Place',
@@ -42,4 +45,4 @@ class Image(models.Model):
 
     @property
     def get_image_url(self):
-        return "{0}{1}".format(settings.MEDIA_URL, self.image.url)
+        return "{}".format(self.image.url)
