@@ -41,6 +41,7 @@ class Image(models.Model):
     class Meta:
         verbose_name = 'Image'
         verbose_name_plural = 'Images'
+        ordering = ('position',)
 
     def __str__(self):
         return f'Image with ID {self.pk}'

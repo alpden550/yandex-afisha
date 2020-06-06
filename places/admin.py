@@ -1,3 +1,4 @@
+from adminsortable2.admin import SortableInlineAdminMixin
 from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
@@ -5,7 +6,7 @@ from django.utils.safestring import mark_safe
 from places.models import Image, Place
 
 
-class ImageInline(admin.TabularInline):
+class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     model = Image
     readonly_fields = ('image_prewiew',)
     list_display = ('title', 'image_prewiew',)
