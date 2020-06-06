@@ -61,7 +61,7 @@ class PlaceDetailView(DetailView):
             'lat': place.latitude,
             'lng': place.longitude,
           },
-          'imgs': [image.get_image_url for image in place.images.all()],
+          'imgs': [place_image.image.url for place_image in place.images.all()],
         }
 
         return JsonResponse(

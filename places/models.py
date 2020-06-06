@@ -43,8 +43,3 @@ class Image(models.Model):
 
     def __str__(self):
         return f'Image with ID {self.pk}'
-
-    @property
-    def get_image_url(self):
-        """Get full image url to use in a view."""
-        return "{}".format(self.image.url)
