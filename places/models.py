@@ -28,7 +28,7 @@ class Image(models.Model):
     """Image for a place object."""
 
     image = models.ImageField('Image')
-    position = models.PositiveIntegerField('Position', null=True, blank=True)
+    position = models.PositiveIntegerField('Position', default=1)
     place = models.ForeignKey(
         'places.Place',
         verbose_name='Place',
