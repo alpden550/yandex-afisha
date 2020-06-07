@@ -7,7 +7,7 @@ class Place(models.Model):
     """Model to represent a place object."""
 
     title = models.CharField('Title', max_length=250, unique=True, db_index=True)
-    place_id = models.CharField('Place ID slug field', max_length=100)
+    place_id = models.CharField('Place ID slug field', max_length=100, blank=True)
     description_short = models.TextField('Short description', blank=True)
     description_long = HTMLField('Full description', blank=True)
     latitude = models.FloatField('Latitude')
