@@ -20,9 +20,28 @@ And set environment variables:
 export SECRET_KEY=secret key
 ```
 
-## How to run local
+## How to prepare and run
 
-```
+``` bash
 python manage.py migrate
+```
+
+It's possible to fill places with management command.
+
+From single json file from url:
+
+```bash
+python manage.py load_place --json_url http://url/file.json
+```
+
+Or use batch operation:
+
+```bash
+python manage.py load_place -B
+```
+
+Run locally:
+
+```bash
 python manage.py runserver
 ```
