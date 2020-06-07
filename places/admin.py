@@ -9,9 +9,12 @@ IMAGE_THUMB_WIDTH = 150
 
 
 class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
+    """Register inlines images for a place object."""
+
     model = Image
-    readonly_fields = ('image_prewiew',)
     list_display = ('title', 'image_prewiew',)
+    readonly_fields = ('image_prewiew',)
+    extra = 0
 
     def image_prewiew(self, obj):
         html = '<img src="{url}" width="{width}"/>'.format(
@@ -26,6 +29,7 @@ class PlaceAdmin(admin.ModelAdmin):
     """Register model Place in admin area."""
 
     list_display = ('id', 'title', 'latitude', 'longitude')
+    list_display_links = ('title',)
     list_filter = ('title',)
     search_fields = ('title', 'description_short')
 
@@ -37,3 +41,5 @@ class PlaceAdmin(admin.ModelAdmin):
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     """Register Images in admin area."""
+
+    list_filter = ('place',)
