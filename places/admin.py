@@ -5,6 +5,8 @@ from django.utils.safestring import mark_safe
 
 from places.models import Image, Place
 
+IMAGE_THUMB_WIDTH = 150
+
 
 class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     model = Image
@@ -12,10 +14,9 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     list_display = ('title', 'image_prewiew',)
 
     def image_prewiew(self, obj):
-        html = '<img src="{url}" width="{width}" height={height} />'.format(
+        html = '<img src="{url}" width="{width}"/>'.format(
             url=obj.image.url,
-            width=obj.image.width / 6,
-            height=obj.image.height / 6,
+            width=IMAGE_THUMB_WIDTH,
         )
         return format_html('{}', mark_safe(html))
 
