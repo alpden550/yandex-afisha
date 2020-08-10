@@ -40,3 +40,4 @@ class ImageAdmin(admin.ModelAdmin):
     """Register Images in admin area."""
 
     list_filter = ('place',)
+    raw_id_fields = ('place', )
