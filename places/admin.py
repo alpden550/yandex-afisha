@@ -17,11 +17,8 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     extra = 0
 
     def image_prewiew(self, obj):
-        html = '<img src="{url}" width="{width}"/>'.format(
-            url=obj.image.url,
-            width=IMAGE_THUMB_WIDTH,
-        )
-        return format_html('{}', mark_safe(html))
+        image = obj.image.url
+        return format_html('<img src="{}" width={} />', image, IMAGE_THUMB_WIDTH)
 
 
 @admin.register(Place)
